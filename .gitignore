@@ -243,5 +243,9 @@ dmypy.json
 pyvenv.cfg
 pip-selfcheck.json
 
+### My Actual Work
+# 
+#
+[Tt]estFile
 
 # End of https://www.gitignore.io/api/macos,python,pycharm,jupyternotebook
