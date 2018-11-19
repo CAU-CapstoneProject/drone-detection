@@ -26,9 +26,9 @@ while(True):
 
        
     prediction = model.predict(data)
-    result = (prediction==0).sum() / len(prediction)
+    detection = (prediction==0).sum() / len(prediction)
     
-    if(result > 0.8):
+    if(detection > 0.8):
         print("Result", result, "Background")
         # Print for debugging
         GPIO.output(4, False)
@@ -36,5 +36,9 @@ while(True):
         print("Result", result, "Drone")
         # Print for debugging
         GPIO.output(4, True)
-        
+        dt = datetime.datetime.now()
+        result = firebase.get('/test',None)
+        data=str(dt.year)+"."+str(dt.month)+"."+str(dt.day)+"　　　"+str(dt.hour)+"."+str(dt.minute)
+        result = firebase.patch('/test',{len(result):data})
+        time.sleep(5)
     #=============================================================
